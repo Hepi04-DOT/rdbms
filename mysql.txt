@@ -1,0 +1,44 @@
+create database pgdcsa1;
+use pgdcsa1;
+create table students(
+rollno int (2),
+fname varchar(20),
+lname varchar (20),
+city varchar (15),
+contact varchar (12)
+);
+ desc students;
+ alter table students add gender char(1);
+ alter table students add cou_id int (2);
+ alter table students modify rollno int primary key;
+ alter table students add constraint foreign key (cou_id) references courses (cou_id);
+ insert into students values (1,'abc','patel','rajkot',' ','M','10','2001-03-04');
+ insert into students values (2,'xyz','shah','rajkot',' ','F','11','2003-02-16');
+ insert into students values (3,'jkl','mishra','ahm',' ','M','12','2004-09-23');
+ insert into students values (4,'wrt','patel','vadodara',' ','F','13','2001-12-04');
+ insert into students values (5,'hkk','patil','delhi',' ','M','14','2001-08-16');
+ insert into students values (6,'hepi','patel','surat',' ','F','15','2002-02-02');
+ delete from students where rollno=6;
+ delete from students where rollno=1;
+ update students set contact='757881345' where rollno=6;
+
+
+ select * from pgdcsa1.students;
+ select fname ,lname from students where fname like 'R%';
+ select fname ,lname from students where lname like '_a%';
+ select *from students where gender='M';
+ alter table students modify DOB date;
+ create table course(
+ cou_id int (2),
+ cou_name varchar (15));
+ desc course;
+ alter table course modify cou_id int primary key;
+ insert into course values(10,'pgdcsa');
+insert into course values(11,'msc_cs');
+insert into course values(12,'msc_aiml');
+insert into course values(13,'m_tech');
+insert into course values(14,'dcs');
+insert into course values(15,'mca');
+select * from course; 
+ 
+ 
